@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Pokedex</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--  <link rel="alternative stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="app.css" />
+    <!-- Compiled and minified CSS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+      nav .brand-logo {
+        color: black;
+        font-weight: bolder;
+      }
+
+      nav ul a {
+        color: black;
+        font-weight: bolder;
+      }
+
+      .material-icons {
+        color: black;
+      }
+
+      .nav {
+        line-height: 56px;
+      }
+
+      #logo {
+        width: 40px;
+        height: 40px;
+        padding: 7px 0px 7px 7px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <img id="logo" src="./images/pokeball.png" />
+          <a href="#!" href="index.html" class="brand-logo"> Pokedex</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#top" onclick="fetchKantoPokemon()">Kanto</a></li>
+            <li><a href="#top" onclick="fetchJohtoPokemon()">Johto</a></li>
+            <li><a href="#top" onclick="fetchHoennPokemon()">Hoenn</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <!-- <a id="modalBtn" class="btn orange">m</a> -->
+      <!-- <h1>Kanto Pokedex</h1> -->
+      <ol name="top" id="pokedex"></ol>
+      <div id="pkmnEntry" class="modal">
+        <div class="modal-content" id="pkContent">
+          <span class="closeBtn" onclick="closeModal">&times;</span>
+          <!-- <img class="pkmnEntry-image" src="./images/001.png" /> -->
+
+          <!-- <div class="evolution"></div> -->
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>
+
+<!--
+        Not all originally my code
+        I might make it the same or it might be slightly different either way here I go
+        based off this link https://dev.to/jamesqquick/build-a-pokedex-with-vanilla-javascript-358m
+        I built this cause I love pokemon and I wanted to practice some js and api call 
+        So why not built it off something you like.      
+    -->
