@@ -9,9 +9,10 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--  <link rel="alternative stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="pkmnTypes.css" />
     <!-- Compiled and minified CSS -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -43,6 +44,7 @@
   </head>
 
   <body>
+    
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -56,19 +58,34 @@
         </div>
       </nav>
     </div>
+    
+    <div id="pokeball-container">
+      <div class="pokeball">
+      </div>
+    </div>
+    
     <div class="container">
       <!-- <a id="modalBtn" class="btn orange">m</a> -->
       <!-- <h1>Kanto Pokedex</h1> -->
+      
+      
       <ol name="top" id="pokedex"></ol>
       <div id="pkmnEntry" class="modal">
         <div class="modal-content" id="pkContent">
-          <span class="closeBtn" onclick="closeModal">&times;</span>
+          <span class="closeBtn">&times;</span>
           <!-- <img class="pkmnEntry-image" src="./images/001.png" /> -->
 
-          <!-- <div class="evolution"></div> -->
+          <div class="evolution"></div>
         </div>
       </div>
     </div>
+<!--     <script>
+      setTimeout(function(){
+        document.getElementById('loader').style.visibility = 'hidden';
+        document.getElementById('pokeball-container').style.height = '0px';
+        document.getElementById('pokeball-container').style.width = '0px';
+      }, 1000);
+    </script> -->
 
     <script src="app.js"></script>
     <!-- Compiled and minified JavaScript -->

@@ -1,0 +1,197 @@
+#grass {
+    background: rgb(120, 200, 80);
+    border: 1px solid rgb(78, 130, 52);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #336918;
+    --darkreader-inline-border-top: #437929;
+    --darkreader-inline-border-right: #437929;
+    --darkreader-inline-border-bottom: #437929;
+    --darkreader-inline-border-left: #437929;
+}
+
+#fire {
+    background: rgb(240, 128, 48);
+    border: 1px solid rgb(156, 83, 31);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #953d00;
+    --darkreader-inline-border-top: #994b14;
+    --darkreader-inline-border-right: #994b14;
+    --darkreader-inline-border-bottom: #994b14;
+    --darkreader-inline-border-left: #994b14;
+}
+
+#water {
+    background: rgb(104, 144, 240);
+    border: 1px solid rgb(68, 94, 156);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #002273;
+    --darkreader-inline-border-top: #293d6f;
+    --darkreader-inline-border-right: #293d6f;
+    --darkreader-inline-border-bottom: #293d6f;
+    --darkreader-inline-border-left: #293d6f;
+}
+
+#poison {
+    background: rgb(160, 64, 160);
+    border: 1px solid rgb(104, 42, 104);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #642164;
+    --darkreader-inline-border-top: #7e2c7e;
+    --darkreader-inline-border-right: #7e2c7e;
+    --darkreader-inline-border-bottom: #7e2c7e;
+    --darkreader-inline-border-left: #7e2c7e;
+}
+
+#flying {
+    background: rgb(168, 144, 240);
+    border: 1px solid rgb(109, 94, 156);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #17015a;
+    --darkreader-inline-border-top: #3c325a;
+    --darkreader-inline-border-right: #3c325a;
+    --darkreader-inline-border-bottom: #3c325a;
+    --darkreader-inline-border-left: #3c325a;
+}
+
+#fighting {
+    background: rgb(192, 48, 40);
+    border: 1px solid rgb(125, 31, 26);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #851812;
+    --darkreader-inline-border-top: #9e1e17;
+    --darkreader-inline-border-right: #9e1e17;
+    --darkreader-inline-border-bottom: #9e1e17;
+    --darkreader-inline-border-left: #9e1e17;
+}
+
+#normal {
+    background: rgb(168, 168, 120);
+    border: 1px solid rgb(109, 109, 78);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #424227;
+    --darkreader-inline-border-top: #58583c;
+    --darkreader-inline-border-right: #58583c;
+    --darkreader-inline-border-bottom: #58583c;
+    --darkreader-inline-border-left: #58583c;
+}
+
+#electric {
+    background: rgb(248, 208, 48);
+    border: 1px solid rgb(161, 135, 31);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #9b7b00;
+    --darkreader-inline-border-top: #9a7f13;
+    --darkreader-inline-border-right: #9a7f13;
+    --darkreader-inline-border-bottom: #9a7f13;
+    --darkreader-inline-border-left: #9a7f13;
+}
+
+#ground {
+    background: rgb(224, 192, 104);
+    border: 1px solid rgb(146, 125, 68);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #674f0b;
+    --darkreader-inline-border-top: #6d5b2c;
+    --darkreader-inline-border-right: #6d5b2c;
+    --darkreader-inline-border-bottom: #6d5b2c;
+    --darkreader-inline-border-left: #6d5b2c;
+}
+
+#psychic {
+    background: rgb(248, 88, 136);
+    border: 1px solid rgb(161, 57, 89);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #830023;
+    --darkreader-inline-border-top: #7a233d;
+    --darkreader-inline-border-right: #7a233d;
+    --darkreader-inline-border-bottom: #7a233d;
+    --darkreader-inline-border-left: #7a233d;
+}
+
+#rock {
+    background: rgb(184, 160, 56);
+    border: 1px solid rgb(120, 104, 36);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #73621a;
+    --darkreader-inline-border-top: #8c7821;
+    --darkreader-inline-border-right: #8c7821;
+    --darkreader-inline-border-bottom: #8c7821;
+    --darkreader-inline-border-left: #8c7821;
+}
+
+#ice {
+    background: rgb(152, 216, 216);
+    border: 1px solid rgb(99, 141, 141);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #124444;
+    --darkreader-inline-border-top: #375353;
+    --darkreader-inline-border-right: #375353;
+    --darkreader-inline-border-bottom: #375353;
+    --darkreader-inline-border-left: #375353;
+}
+
+#bug {
+    background: rgb(168, 184, 32);
+    border: 1px solid rgb(109, 120, 21);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #7f8c0e;
+    --darkreader-inline-border-top: #96a513;
+    --darkreader-inline-border-right: #96a513;
+    --darkreader-inline-border-bottom: #96a513;
+    --darkreader-inline-border-left: #96a513;
+}
+
+#dragon {
+    background: rgb(112, 56, 248);
+    border: 1px solid rgb(73, 36, 161);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #270097;
+    --darkreader-inline-border-top: #3c1793;
+    --darkreader-inline-border-right: #3c1793;
+    --darkreader-inline-border-bottom: #3c1793;
+    --darkreader-inline-border-left: #3c1793;
+}
+
+#ghost {
+    background: rgb(112, 88, 152);
+    border: 1px solid rgb(73, 57, 99);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #382950;
+    --darkreader-inline-border-top: #493768;
+    --darkreader-inline-border-right: #493768;
+    --darkreader-inline-border-bottom: #493768;
+    --darkreader-inline-border-left: #493768;
+}
+
+#dark {
+    background: rgb(112, 88, 72);
+    border: 1px solid rgb(73, 57, 47);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #4a382b;
+    --darkreader-inline-border-top: #664d3d;
+    --darkreader-inline-border-right: #664d3d;
+    --darkreader-inline-border-bottom: #664d3d;
+    --darkreader-inline-border-left: #664d3d;
+}
+
+#steel {
+    background: rgb(184, 184, 208);
+    border: 1px solid rgb(120, 120, 135);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #18182b;
+    --darkreader-inline-border-top: #3c3c45;
+    --darkreader-inline-border-right: #3c3c45;
+    --darkreader-inline-border-bottom: #3c3c45;
+    --darkreader-inline-border-left: #3c3c45;
+}
+
+#fairy {
+    background: rgb(238, 153, 172);
+    border: 1px solid rgb(155, 100, 112);
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #520315;
+    --darkreader-inline-border-top: #56333b;
+    --darkreader-inline-border-right: #56333b;
+    --darkreader-inline-border-bottom: #56333b;
+    --darkreader-inline-border-left: #56333b;
+}
