@@ -1,7 +1,27 @@
 const pokedex = document.getElementById("pokedex");
+const searchBar = document.getElementById("searchBar");
+let pkmnList = [];
+
+searchBar.addEventListener('keyup', (e)=> {
+  const searchString = e.target.value;
+  console.log(searchString);
+  //console.log(fliteredPkmnList);
+  console.log(pkmnList);
+  const fliteredPkmnList = pkmnList.filter( (list) => {
+    return (list.name.includes(searchString.toLowerCase()) || list.type.includes((searchString.toLowerCase())) || list.id.toString().includes(searchString));
+  });
+  console.log(fliteredPkmnList);
+  displayPokemon(fliteredPkmnList);
+});
+
 const pokeCache = {};
 //console.log(pokedex);
 const pokemonSpeciesBaseURL = `https://pokeapi.co/api/v2/pokemon-species/`;
+
+/*fetch("pokedex.json")
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+  */
 
 const fetchKantoPokemon = async () => {
   document.getElementById("pokeball-container").style.visibility = "visible";
@@ -9,25 +29,28 @@ const fetchKantoPokemon = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon?limit=151`;
   const res = await fetch(url);
   const data = await res.json();
-
+  ;
   console.log("fetch kanto");
   //console.log(data);
   const pokemon = data.results.map((result, index) => ({
     name: checkName(result.name),
     id: index + 1,
-    apiURL: result.url
+    apiURL: result.url,
     /* type: getType(result.url) */
   }));
 
   for (const pk of pokemon) {
     var num = pokemon.indexOf(pk);
     pokemon[num].type = await getType(pk.apiURL);
-
+    pkmnList = pokemon;
+    
     //console.log(url2 + pokemon[num].id);
+    
   }
   //console.log(pokemon);
+  //console.log(pkmnList);
   displayPokemon(pokemon);
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("pokeball-container").style.visibility = "hidden";
   }, 50);
 };
@@ -42,17 +65,18 @@ const fetchJohtoPokemon = async () => {
   const pokemon = data.results.map((result, index) => ({
     name: checkName(result.name),
     id: index + 152,
-    apiURL: result.url
+    apiURL: result.url,
   }));
 
   for (const pk of pokemon) {
     var num = pokemon.indexOf(pk);
     pokemon[num].type = await getType(pk.apiURL);
+    pkmnList = pokemon;
     //console.log(pokemon[num]);
   }
   //console.log(pokemon);
   displayPokemon(pokemon);
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("pokeball-container").style.visibility = "hidden";
   }, 50);
 };
@@ -67,16 +91,17 @@ const fetchHoennPokemon = async () => {
   const pokemon = data.results.map((result, index) => ({
     name: checkName(result.name),
     id: index + 252,
-    apiURL: result.url
+    apiURL: result.url,
   }));
   for (const pk of pokemon) {
     var num = pokemon.indexOf(pk);
     pokemon[num].type = await getType(pk.apiURL);
+    pkmnList = pokemon;
     /* console.log(pokemon[num]); */
   }
   //console.log(pokemon);
   displayPokemon(pokemon);
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("pokeball-container").style.visibility = "hidden";
   }, 50);
 };
@@ -86,14 +111,12 @@ function displayPokemon(pokemon) {
   //console.log(pokemon);
   const pokemonHTMLString = pokemon
     .map(
-      pkmn => `
-    <li class="card bk${pkmn.id}" onclick="selectPokemon(${pkmn.id})">
-    
-        <h2 class="card-id" >#${pad(pkmn.id, 3)}</h2>
-        <img class="card-image" src="./images/${pad(pkmn.id, 3)}.png"/>
-        <h2 class="card-title" >${capitalize(pkmn.name)}</h2>
-        <div class="card-subtitle">${setType(pkmn)}</div>
-    </li></a>
+      (pkmn) => `
+      <li class="card bk${pkmn.id} flip-card-front" onclick="selectPokemon(${pkmn.id})">     
+          <h2 class="card-id" >#${pad(pkmn.id, 3)} ${capitalize(pkmn.name)}</h2>
+          <img class="card-image" src="./images/${pad(pkmn.id, 3)}.png"/>           
+          <div class="card-subtitle">${setType(pkmn)}</div>
+      </li></a>
     `
     )
     .join("");
@@ -101,9 +124,28 @@ function displayPokemon(pokemon) {
   pokedex.innerHTML = pokemonHTMLString;
 }
 
-/* <div class="card-subtitle">${type(pkmn)}</div>; */
+/* <div class="card-subtitle">${type(pkmn)}</div>; 
+<h2 class="card-title">${capitalize(pkmn.name)}</h2>;*/
 
-const selectPokemon = async id => {
+/*
+    <div class="flip-card">
+      <div class="flip-card-inner">
+          <li class="card bk${pkmn.id} flip-card-front" onclick="selectPokemon(${pkmn.id})">
+          
+              <h2 class="card-id" >#${pad(pkmn.id, 3)} ${capitalize(pkmn.name)}</h2>
+              <img class="card-image" src="./images/${pad(pkmn.id, 3)}.png"/>
+              
+              <div class="card-subtitle">${setType(pkmn)}</div>
+          </li></a>
+        <div class="flip-card-back">
+          <h3>${capitalize(pkmn.name)} </h3>
+          <p> ${pkmn.ability} <p>
+        </div>
+      </div>
+    </div>
+    */
+
+const selectPokemon = async (id) => {
   //console.log(id);
   //console.log("cache");
   //console.log(pokeCache);
@@ -119,11 +161,11 @@ const selectPokemon = async id => {
   displaymodal(pokeCache[id]);
 };
 
-const displaymodal = async pkmn => {
+const displaymodal = async (pkmn) => {
   console.log("displaymodalinfo");
   //console.log(pkmn);
   const content = document.getElementById("pkContent");
-  const type = pkmn.types.map(type => type.type.name).join(", ");
+  const type = pkmn.types.map((type) => type.type.name).join(", ");
   modal.style.display = "block";
   var flavourString = await getText(pkmn.species.url);
   var evoString = await getEvolution(pkmn.evoURL);
@@ -169,45 +211,64 @@ const displaymodal = async pkmn => {
   content.innerHTML = htmlString;
 };
 
-const getEvolutionURL = async url => {
+const getEvolutionURL = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
   //console.log(data.evolution_chain.url);
   return data.evolution_chain.url;
 };
 
-function processChain(chain, evoArray) {
-  if (chain.evolves_to.length > 0) {
-    var evoDetails = chain.evolves_to[0].evolution_details[0];
-    console.log(evoDetails.item);
-    //var x = chain.evolves_to[0].evolution_details[0].item[0];
-    //console.log(x);
-  
-    evoArray[evoArray.length] = {
-      name: chain.species.name,
-      id: chain.species.url.split("/").reverse()[1],
-      trigger: getEvoTriggerData(evoDetails.trigger, "name"),
-      minLevel: getEvoTriggerData(evoDetails, "min_level"),
-      minHappiness: getEvoTriggerData(evoDetails, "min_happiness"),
-      timeOfDay:  getEvoTriggerData(evoDetails, "time_of_day"),
-      item: null
-    };
+/* 
+TODO: grab maxevo for eevee evos 
+*/
 
-    if (evoDetails.item) {
-      evoArray[evoArray.length-1].item = getEvoTriggerData(evoDetails.item, "name");
+function processChain(chain, evoArray) {
+  let maxevo = chain.evolves_to.length;
+  console.log("possbile parallel evoultions " + maxevo);
+
+  if (chain.evolves_to.length > 0) {
+    for (let p = 0; p < chain.evolves_to.length; p++) {
+      /*while(chain.evolves_to)
+      {
+        if (chain.evolves_to[p]) {
+          console.log("possbile parallel evo" + maxevo);
+        }
+      }*/
+      var evoDetails = chain.evolves_to[p].evolution_details[0];
+      console.log("details");
+      console.log("items is " + evoDetails.item);
+      //var x = chain.evolves_to[0].evolution_details[0].item[0];
+      //console.log(x);
+      console.log(evoArray);
+      evoArray[evoArray.length] = {
+        name: chain.species.name,
+        id: chain.species.url.split("/").reverse()[1],
+        trigger: getEvoTriggerData(evoDetails.trigger, "name"),
+        minLevel: getEvoTriggerData(evoDetails, "min_level"),
+        minHappiness: getEvoTriggerData(evoDetails, "min_happiness"),
+        timeOfDay: getEvoTriggerData(evoDetails, "time_of_day"),
+        item: null,
+      };
+
+      if (evoDetails.item) {
+        evoArray[evoArray.length - 1].item = getEvoTriggerData(evoDetails.item, "name");
+      }
+
+      return processChain(chain.evolves_to[p], evoArray);
     }
-      
-    return processChain(chain.evolves_to[0], evoArray);
   } else {
     evoArray[evoArray.length] = {
       name: chain.species.name,
-      id: chain.species.url.split("/").reverse()[1]
+      id: chain.species.url.split("/").reverse()[1],
     };
     return evoArray;
   }
 }
 
-/* where Mena DIED blame someone thx*/
+/* 
+!where Mena DIED blame someone thx
+*/
+
 /* function processChain(chain, evoArray) {
   if (chain.evolves_to.length > 0) {
 
@@ -226,64 +287,49 @@ function processChain(chain, evoArray) {
   }
 } */
 
-
-
-function getEvoTriggerData(JSONin,key)
-{
-    if(JSONin.hasOwnProperty(key)){
-      return JSONin[key];
-    }
-    return null;
+function getEvoTriggerData(JSONin, key) {
+  if (JSONin.hasOwnProperty(key)) {
+    return JSONin[key];
+  }
+  return null;
 }
 
-const getEvolution = async url => {
-  
+const getEvolution = async (url) => {
   const content = document.getElementById("evo");
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
   const chain = data.chain;
   const forms = await processChain(chain, []);
-
-  console.log(forms);
-
+  console.log("forms");
+  //console.log(forms);
 
   var htmlString = ``;
   for (let i = 0; i < forms.length; i++) {
     htmlString += `<div class="evo-container"><img class="evo-image1" src="./images/${pad(forms[i].id, 3)}.png" /><p class="evo-name">${forms[i].name}</p></div>`;
     var evoReq = ``;
 
-    if(forms[i].minLevel != null)
-    {evoReq = `Lvl ${forms[i].minLevel}`}
-    else if(forms[i].minHappiness != null)
-    {evoReq = `Happiness`;}
+    if (forms[i].minLevel != null) {
+      evoReq = `Lvl ${forms[i].minLevel}`;
+    } else if (forms[i].minHappiness != null) {
+      evoReq = `Happiness`;
+    }
 
-    if(forms[i].trigger == "level-up")
-    {
+    if (forms[i].trigger == "level-up") {
       if (forms[i].minLevel != undefined) {
         htmlString += `<p class="lvl" > <i class="arrow material-icons ">keyboard_arrow_right</i> <br>${evoReq}</p>`;
-      }
-      else{
+      } else {
         htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Unknown</p>`;
       }
-    }
-    else if(forms[i].trigger == "trade")
-    {
+    } else if (forms[i].trigger == "trade") {
       htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Trade</p>`;
-    }
-    else if(forms[i].trigger == "use-item")
-    {
-      if(forms[i].item != null)
-      {
+    } else if (forms[i].trigger == "use-item") {
+      if (forms[i].item != null) {
         htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Stone</p>`;
       }
-
-    }
-    else
-    {
+    } else {
       htmlString;
     }
-
   }
 
   //console.log(htmlString);
@@ -295,10 +341,10 @@ const getEvolution = async url => {
   return htmlString;
 };
 
-const getType = async url => {
+const getType = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
-  return data.types.map(type => type.type.name);
+  return data.types.map((type) => type.type.name);
 };
 
 function checkName(name) {
@@ -308,7 +354,7 @@ function checkName(name) {
   else return name;
 }
 
-const getText = async url => {
+const getText = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
   //console.log("text");
@@ -345,7 +391,10 @@ function grabText(language, version, data) {
 function setType(pkmn) {
   var spanString = "";
   for (var i = 0; i < pkmn.type.length; i++) {
-    spanString += `<span class="type" id="${pkmn.type[i]}">${capitalize(pkmn.type[i]).trim()}</span>`;
+    if (pkmn.type.length == 1) {
+      spanString += `<div class="type type-empty"> &#10023; </div>`;
+    }
+    spanString += `<div class="type" id="${pkmn.type[i]}">${capitalize(pkmn.type[i]).trim()}</div>`;
   }
   return spanString;
 }
@@ -360,7 +409,7 @@ function pad(str, max) {
 
 /* <div class="card-subtitle">${type(pkmn)}</div>; */
 
-const capitalize = s => {
+const capitalize = (s) => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };

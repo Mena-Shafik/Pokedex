@@ -1,0 +1,76 @@
+[
+    {
+        "pkmnId": 1,
+        "pkmnName": "Bulbasaur",
+        "types": [
+            "poison",
+            "grass"
+        ],
+        "abilities": [
+            "chlorophyll",
+            "overgrow"
+        ],
+        "Stat": {
+            "HP": 45,
+            "attack": 49,
+            "defence": 49,
+            "speed": 45,
+            "specialAttack": 65,
+            "specialDefence": 65
+        },
+        "height": "6.9",
+        "weight": ".9",
+        "desc": "It carries a seed on its back right from birth. As it grows older, the seed also grows larger.",
+        "Evo": [
+            {
+                "id": 1,
+                "evoReq": 16
+            },
+            {
+                "id": 2,
+                "evoReq": 32
+            },
+            {
+                "id": 3,
+                "evoReq": null
+            }
+        ]
+    },
+    {
+        "pkmnId": 2,
+        "pkmnName": "Ivysaur",
+        "types": [
+            "poison",
+            "grass"
+        ],
+        "abilities": [
+            "chlorophyll",
+            "overgrow"
+        ],
+        "height": "13",
+        "weight": "1",
+        "Stat": {
+            "HP": 60,
+            "attack": 62,
+            "defence": 63,
+            "speed": 60,
+            "specialAttack": 80,
+            "specialDefence": 80
+        },
+        "desc": "If the bud on its back starts to smell sweet, it is evidence that the large flower will soon bloom.",
+        "evoChain": [
+            {
+                "id": 1,
+                "evoReq": 16
+            },
+            {
+                "id": 2,
+                "evoReq": 32
+            },
+            {
+                "id": 3,
+                "evoReq": null
+            }
+        ]
+    }
+]

@@ -1,3 +1,29 @@
+:root {
+    --color-bug: #a8b820;
+    --color-dark: #705848;
+    --color-dragon: #7038f8;
+    --color-electric: #f8d030;
+    --color-fairy: #ee99ac;
+    --color-fighting: #c03028;
+    --color-fire: #f08030;
+    --color-flying: #a890f0;
+    --color-ghost: #705898;
+    --color-grass: #78c850;
+    --color-ground: #e0c068;
+    --color-ice: #98d8d8;
+    --color-normal: #a8a878;
+    --color-poison: #a040a0;
+    --color-psychic: #f85888;
+    --color-rock: #b8a038;
+    --color-steel: #b8b8d0;
+    --color-water: #6890f0;
+    --color-eff-immune: #d6d6d6;
+    --color-eff-noteffective: #fdd0d0;
+    --color-eff-veryeffective: #ccfbcc;
+    --field-width: 35px;
+    --custom-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 #grass {
     background: rgb(120, 200, 80);
     border: 1px solid rgb(78, 130, 52);
@@ -7,6 +33,7 @@
     --darkreader-inline-border-right: #437929;
     --darkreader-inline-border-bottom: #437929;
     --darkreader-inline-border-left: #437929;
+    text-shadow: 0 0 8px rgba(93, 93, 93, 0.39);
 }
 
 #fire {

@@ -9,11 +9,15 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--  <link rel="alternative stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="pkmnTypes.css" />
     <!-- Compiled and minified CSS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
@@ -29,6 +33,7 @@
 
       .material-icons {
         color: black;
+        display: unset;
       }
 
       .nav {
@@ -44,13 +49,13 @@
   </head>
 
   <body>
-    
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
           <img id="logo" src="./images/pokeball.png" />
           <a href="#!" href="index.html" class="brand-logo"> Pokedex</a>
           <ul class="right hide-on-med-and-down">
+            <li><img id="searchIcon" src="./images/pokeball.png"/><input type="text" name="searchBar" id="searchBar" placeholder="..." /></li>
             <li><a href="#top" onclick="fetchKantoPokemon()">Kanto</a></li>
             <li><a href="#top" onclick="fetchJohtoPokemon()">Johto</a></li>
             <li><a href="#top" onclick="fetchHoennPokemon()">Hoenn</a></li>
@@ -58,18 +63,20 @@
         </div>
       </nav>
     </div>
-    
+
     <div id="pokeball-container">
-      <div class="pokeball">
-      </div>
+      <div class="pokeball"></div>
     </div>
-    
+
     <div class="container">
       <!-- <a id="modalBtn" class="btn orange">m</a> -->
       <!-- <h1>Kanto Pokedex</h1> -->
-      
-      
+      <div id="searchWrapper">
+        
+        
+      </div>
       <ol name="top" id="pokedex"></ol>
+
       <div id="pkmnEntry" class="modal">
         <div class="modal-content" id="pkContent">
           <span class="closeBtn">&times;</span>
@@ -79,7 +86,7 @@
         </div>
       </div>
     </div>
-<!--     <script>
+    <!--     <script>
       setTimeout(function(){
         document.getElementById('loader').style.visibility = 'hidden';
         document.getElementById('pokeball-container').style.height = '0px';

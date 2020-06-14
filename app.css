@@ -2,7 +2,50 @@ body {
   /* background-color: #222; */
   background: url(./images/body_bg.png) top left repeat;
   margin: 0;
-  font-family: rubik;
+  /*font-family: rubik;*/
+  font-family: var(--custom-font);
+}
+
+#searchWrapper {
+  text-align: center;
+  position: relative;
+  min-width: 100px;
+}
+
+#searchIcon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin-top: 17px;
+  margin-left: 5px;
+}
+
+#searchBar {
+  height: 40px;
+  width: 130px;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 7px;
+  text-indent: 30px;
+  padding: 0;
+  margin: 0;
+  font-family: var(--custom-font);
+}
+
+.search-icon {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 14px;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  cursor: pointer;
+  /*visibility: hidden;*/
 }
 
 .container {
@@ -20,7 +63,8 @@ body {
 #pokeball-container {
   background-color: #fbab5c;
   height: 100vh;
-  width: 100vw;
+  /*width: 100vw;*/
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,20 +122,28 @@ h1 {
   color: #f4f4f4;
 }
 
+.card::before {
+  filter: opacity(0.1);
+}
+
 .card {
   list-style: none;
-  padding: 40px;
+  /*padding: 40px;*/
   background-color: #f4f4f4;
+  background-image: url(/images/pokeball-grey.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% 90%;
   color: #222;
-  border-radius: 5px;
-  width: 170px;
-  height: 250px;
-  margin: 5px;
+  border-radius: 0px 25px 0px 25px;
+  width: 240px;
+  height: 240px;
+  margin: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 25px;
   margin: 0;
   text-align: center;
@@ -99,9 +151,15 @@ h1 {
 
 .card-id {
   margin: 0;
-  padding: 0;
+  padding: 2px 0px 0px 5px;
   text-align: left;
-  font-size: larger;
+  font-size: 85%;
+  background: #999;
+  width: 130px;
+  height: 22px;
+  border-radius: 0px 0px 25px 0px;
+  border-bottom: 2px crimson solid;
+  border-right: 2px crimson solid;
 }
 
 /* .card-subtitle {
@@ -111,18 +169,27 @@ h1 {
   } */
 
 .card-subtitle {
-  text-align: center;
+  text-align: right;
+  float: right;
+  padding-bottom: 3px;
+  background-color: #999;
+  width: 130px;
+  height: 22px;
+  margin-top: 13px;
+  border-radius: 30px 0px 0px 0px;
+  border-top: 2px royalblue solid;
+  border-left: 2px royalblue solid;
 }
 
 .card-image {
-  width: 150px;
-  height: 150px;
-  background: #444;
-  border-radius: 5px;
-  padding: 10px;
+  width: 135px;
+  height: 135px;
+  padding: 12px 0px 0px 0px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 12px;
 }
 
 #pokedex {
@@ -135,11 +202,19 @@ h1 {
 
 .type {
   font-weight: bold;
-  font-size: medium;
+  font-size: xx-small;
   margin: 0px 5px 0px 5px;
   color: #fff;
-  padding: 2px;
+  padding: 2px 2px 3px 2px;
+  text-align: center;
   border-radius: 5px;
+  text-shadow: 0 0 8px rgba(93, 93, 93, 0.39);
+  width: 40px;
+  display: inline-block;
+}
+
+.type-empty {
+  background-color: currentcolor;
 }
 
 .evolution {
@@ -360,20 +435,19 @@ h1 {
     background-color: #f4f4f4;
     color: #222;
     border-radius: 5px;
-    width: 50px;
-    height: 100px;
+    width: 80%;
+    height: 40px;
     margin: 5px;
+    background-image: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
   .card-image {
-    width: 45px;
-    height: 45px;
-    background: #444;
-    border-radius: 5px;
-    padding: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-top: 0px;
   }
   .card-title {
     text-transform: uppercase;
@@ -382,25 +456,48 @@ h1 {
     text-align: center;
   }
   .card-id {
-    margin: 0;
+    margin: 0px 0px -30px 60px;
     padding: 0;
     text-align: left;
-    font-size: smaller;
+    font-size: 90%;
+    width: 43px;
+    height: 12px;
+    border: none;
+    background-color: #f4f4f4;
+  }
+  .card-image-bk {
+    width: 220px;
+    height: 220px;
+    z-index: -2;
+    position: absolute;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -27px;
+    filter: opacity(0.1);
+  }
+  .card-subtitle {
     text-align: center;
+    background-color: #f4f4f4;
+    width: 20px;
+    height: 0px;
+    margin: -68px -20px 0px 0px;
+    border: none;
   }
   .type {
     font-weight: bold;
-    font-size: 6px;
-    margin: 0px 2px 0px 2px;
+    font-size: 11px;
+    margin: 15px 10px 0px -50px;
     color: #fff;
     padding: 2px;
+    width: 50px;
     border-radius: 5px;
   }
   nav ul a {
     -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
     font-size: 0.7rem !important;
-    color: #fff;
+    color: #000;
     display: block;
     padding: 0 10px !important;
     cursor: pointer;
