@@ -22,8 +22,8 @@ body {
 
 #searchBar {
   height: 40px;
-  width: 130px;
-  font-size: medium;
+  width: 110px;
+  font-size: small;
   font-weight: bold;
   border-radius: 7px;
   text-indent: 30px;
@@ -220,7 +220,7 @@ h1 {
 .evolution {
   display: flex;
   width: 88%;
-  height: 250px;
+  height: 300px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -289,7 +289,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   width: 850px;
-  height: 830px;
+  height: 875px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px rgba(0, 0, 0, 0.17);
   animation-name: modalopen;
   animation-duration: 1s;
@@ -415,6 +415,15 @@ h1 {
 .info-container {
   padding-top: 30px;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+/* mobile size */
 
 @media screen and (max-width: 640px) {
   .container {
@@ -673,6 +682,9 @@ h1 {
     text-align: left;
     padding-bottom: 0px;
   }
+  nav .brand-logo {
+    display: none;
+  }
 }
 
 /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -739,7 +751,6 @@ nav.nav-wrapper {
 nav.brand-logo {
   position: absolute;
   color: #fff;
-  display: inline-block;
   font-size: 2.1rem;
   padding: 0;
 }
@@ -883,7 +894,6 @@ nav ul.left {
 
 nav .brand-logo {
   position: absolute;
-  display: inline-block;
   font-size: 1.5rem;
   padding: 0;
   padding-left: 10px;

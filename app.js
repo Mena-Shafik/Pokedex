@@ -214,7 +214,7 @@ const displaymodal = async (pkmn) => {
 const getEvolutionURL = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
-  //console.log(data.evolution_chain.url);
+  console.log(data.evolution_chain.url);
   return data.evolution_chain.url;
 };
 
@@ -224,8 +224,8 @@ TODO: grab maxevo for eevee evos
 
 function processChain(chain, evoArray) {
   let maxevo = chain.evolves_to.length;
-  console.log("possbile parallel evoultions " + maxevo);
-
+  console.log("possbile parallel evolutions " + maxevo);
+  //console.log(chain);
   if (chain.evolves_to.length > 0) {
     for (let p = 0; p < chain.evolves_to.length; p++) {
       /*while(chain.evolves_to)
@@ -239,7 +239,7 @@ function processChain(chain, evoArray) {
       console.log("items is " + evoDetails.item);
       //var x = chain.evolves_to[0].evolution_details[0].item[0];
       //console.log(x);
-      console.log(evoArray);
+      //console.log(evoArray);
       evoArray[evoArray.length] = {
         name: chain.species.name,
         id: chain.species.url.split("/").reverse()[1],
@@ -305,30 +305,58 @@ const getEvolution = async (url) => {
   //console.log(forms);
 
   var htmlString = ``;
-  for (let i = 0; i < forms.length; i++) {
-    htmlString += `<div class="evo-container"><img class="evo-image1" src="./images/${pad(forms[i].id, 3)}.png" /><p class="evo-name">${forms[i].name}</p></div>`;
-    var evoReq = ``;
+  //console.log(forms);
+  if (forms[0].name == "eevee") {
+    //console.log(key);
+    htmlString += `<div class="evo-container grid">
+    <div></div>
+    <div><p>evo by stone</p></div>
+    <div></div>
+    <div><img class="evo-image1" src="./images/134.png" /><p class="evo-name">vaporeon</p></div>
+    <div><img class="evo-image1" src="./images/135.png" /><p class="evo-name">jolteon</p></div>
+    <div><img class="evo-image1" src="./images/136.png" /><p class="evo-name">flareon</p></div>
+    <div><img class="evo-image1" src="./images/196.png" /><p class="evo-name">espeon</p></div>
+    <div><img class="evo-image1" src="./images/133.png" /><p class="evo-name">eevee</p></div>
+    <div><img class="evo-image1" src="./images/197.png" /><p class="evo-name">umbreon</p></div>
+    <div><img class="evo-image1" src="./images/470.png" /><p class="evo-name">leafeon</p></div>
+    <div><img class="evo-image1" src="./images/471.png" /><p class="evo-name">glaceon</p></div>
+    <div><img class="evo-image1" src="./images/700.png" /><p class="evo-name">sylveon</p></div> </div>`;
+  } else {
+  /*else if(forms[0].name == 'oddish')
+  {
+      htmlString += `<div class="evo-container">
+      <div><img class="evo-image1" src="./images/043.png" /><p class="evo-name">oddish</p></div>
+      <p class="lvl" > <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Lvl 21</p>
+      <div><img class="evo-image1" src="./images/044.png" /><p class="evo-name">gloom</p></div>
+      <p class="lvl" > <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Lvl 21</p>
+      <div><img class="evo-image1" src="./images/045.png" /><p class="evo-name">Vileplume</p><img class="evo-image1" src="./images/182.png" /><p class="evo-name">bellossom</p></div>
+     `;
+  }*/
+    for (let i = 0; i < forms.length; i++) {
+      htmlString += `<div class="evo-container"><img class="evo-image1" src="./images/${pad(forms[i].id, 3)}.png" /><p class="evo-name">${forms[i].name}</p></div>`;
+      var evoReq = ``;
 
-    if (forms[i].minLevel != null) {
-      evoReq = `Lvl ${forms[i].minLevel}`;
-    } else if (forms[i].minHappiness != null) {
-      evoReq = `Happiness`;
-    }
+      if (forms[i].minLevel != null) {
+        evoReq = `Lvl ${forms[i].minLevel}`;
+      } else if (forms[i].minHappiness != null) {
+        evoReq = `Happiness`;
+      }
 
-    if (forms[i].trigger == "level-up") {
-      if (forms[i].minLevel != undefined) {
-        htmlString += `<p class="lvl" > <i class="arrow material-icons ">keyboard_arrow_right</i> <br>${evoReq}</p>`;
+      if (forms[i].trigger == "level-up") {
+        if (forms[i].minLevel != undefined) {
+          htmlString += `<p class="lvl" > <i class="arrow material-icons ">keyboard_arrow_right</i> <br>${evoReq}</p>`;
+        } else {
+          htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Unknown</p>`;
+        }
+      } else if (forms[i].trigger == "trade") {
+        htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Trade</p>`;
+      } else if (forms[i].trigger == "use-item") {
+        if (forms[i].item != null) {
+          htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Stone</p>`;
+        }
       } else {
-        htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Unknown</p>`;
+        htmlString;
       }
-    } else if (forms[i].trigger == "trade") {
-      htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Trade</p>`;
-    } else if (forms[i].trigger == "use-item") {
-      if (forms[i].item != null) {
-        htmlString += `<p class="lvl">  <i class="arrow material-icons ">keyboard_arrow_right</i> <br>Stone</p>`;
-      }
-    } else {
-      htmlString;
     }
   }
 
