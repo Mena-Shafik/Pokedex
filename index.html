@@ -9,10 +9,11 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--  <link rel="alternative stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-    
+
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="pkmnTypes.css" />
+    <link rel="stylesheet" href="search.css" />
     <!-- Compiled and minified CSS -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -55,7 +56,12 @@
           <img id="logo" src="./images/pokeball.png" />
           <a href="#!" href="index.html" class="brand-logo"> Pokedex</a>
           <ul class="right hide-on-med-and-down">
-            <li><img id="searchIcon" src="./images/pokeball.png"/><input type="text" name="searchBar" id="searchBar" placeholder="..." /></li>
+            <li><img id="searchIcon" src="./images/pokeball.png"/><input type="text" name="searchBar" id="searchBar" placeholder="Gengar" /></li>
+            <!--<li class="search-box">
+                <input class="search-txt" type="text" name="input" class="input" placeholder="Gengar"/>
+                <a class="search-btn" href="#top"><img id="searchIcon" src="./images/pokeball-grey.png"/></i></a>
+              
+            </li>-->
             <li><a href="#top" onclick="fetchKantoPokemon()">Kanto</a></li>
             <li><a href="#top" onclick="fetchJohtoPokemon()">Johto</a></li>
             <li><a href="#top" onclick="fetchHoennPokemon()">Hoenn</a></li>
@@ -71,10 +77,7 @@
     <div class="container">
       <!-- <a id="modalBtn" class="btn orange">m</a> -->
       <!-- <h1>Kanto Pokedex</h1> -->
-      <div id="searchWrapper">
-        
-        
-      </div>
+      <div id="searchWrapper"></div>
       <ol name="top" id="pokedex"></ol>
 
       <div id="pkmnEntry" class="modal">
